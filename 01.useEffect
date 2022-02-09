@@ -1,0 +1,56 @@
+import React, { useState, useEffect } from 'react';
+import { StyleSheet, View, Text, Pressable } from 'react-native';
+
+function App() {
+  const [count, setCount] = useState(1);
+  const [isMultipleOfThree, setIsMultipleOfThree] = useState(false);
+  
+  useEffect(() => {
+    console.log('useEffect!')
+  })
+
+  useEffect(() => {
+    console.log('count: ', count, '/ isMultipleOfThree: ', isMultipleOfThree)
+  }, [isMultipleOfThree])
+  return (
+    <View style={styles.container}>
+      <Text style={styles.text}>{count}</Text>
+      <Pressable 
+        style={styles.button}
+        onPress={() => {
+          setCount(count + 1);
+          if (count % 3 === 0) {
+            setIsMultipleOfThree(!isMultipleOfThree);
+          }
+        }}
+      >
+        <Text style={styles.buttonText}>+ 1</Text>
+      </Pressable>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  text: {
+    fontSize: 50,
+    marginBottom: 30,
+  },
+  button: {
+    justifyContent: 'center', 
+    alignItems: 'center', 
+    width: 50, 
+    height: 50, 
+    marginHorizontal: 10, 
+    backgroundColor: 'skyblue'
+  },
+  buttonText: {
+    fontSize: 20,
+  },
+});
+
+export default App;
