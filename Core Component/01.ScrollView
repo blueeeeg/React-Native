@@ -1,0 +1,51 @@
+import React from 'react';
+import { StyleSheet, ScrollView, Text, View } from 'react-native';
+
+function App() {
+  const testText = 'ScrollView\nScrollView\nScrollView\nScrollView\nScrollView\nScrollView\nScrollView\nScrollView\nScrollView\nScrollView\nScrollView\nScrollView\nScrollView\nScrollView\nScrollView\nScrollView\n';
+  
+  return (
+    <ScrollView 
+      style={styles.style} 
+      contentContainerStyle={styles.contentContainerStyle}
+      horizontal={false}
+      showsVerticalScrollIndicator={false}
+      stickyHeaderIndices={[0]}
+    >
+      <Text style={styles.headerText}> Header </Text>
+      <Text style={styles.text}>
+        {testText}
+      </Text>
+      <View style={styles.divider} />
+      <Text style={styles.text}>
+        {testText}
+      </Text>
+    </ScrollView>
+  );
+}
+
+const styles = StyleSheet.create({
+  style: {
+    flex: 1,
+    paddingHorizontal: 20,
+    backgroundColor: 'yellow',
+  },
+  contentContainerStyle: {
+    backgroundColor: 'green',
+  },
+  headerText: {
+    fontSize: 50,
+    backgroundColor: 'red',
+  },
+  text: {
+    fontSize: 30,
+  },
+  divider: {
+    width: 360,
+    height: 10,
+    left: -20,
+    backgroundColor: 'black',
+  },
+})
+
+export default App;
