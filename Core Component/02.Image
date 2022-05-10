@@ -1,0 +1,40 @@
+import React, { useState } from 'react';
+import { StyleSheet, View, Pressable, Text, Image } from 'react-native';
+
+
+const App = () => {
+  const image = require('./src/assets/image.jpg');
+  
+  const [resizeMode, setResizeMode] = useState('cover');
+  const resizeModeArr = ['cover', 'contain', 'stretch', 'repeat', 'center'];
+  const [mode, setMode] = useState(0);
+
+  return (
+    <View style={styles.container}>
+      <Pressable 
+        style={{backgroundColor: 'red'}} 
+        onPress={() => { 
+          setResizeMode(resizeModeArr[(mode + 1) % 5]);
+          setMode(mode + 1);
+        }}>
+        <Text>mode 변경</Text>
+      </Pressable>
+      <Text>현재 mode : {resizeMode}</Text>
+      <Image source={image} style={styles.image} resizeMode={resizeMode} />
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  image: {
+    width: 300,
+    height: 300,
+  }
+});
+
+export default App;
